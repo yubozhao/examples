@@ -1,0 +1,22 @@
+service: serverless-es6-jest # NOTE: update this with your service name
+
+plugins:
+  - serverless-webpack
+
+provider:
+  name: aws
+  runtime: nodejs4.3
+  stage: dev
+  iamRoleStatement:
+    $ref: ./iamRoleStatement.json
+  environment:
+    DARKSKY_API:  'api key'
+    smtpHost: ''
+    smtpPort: ''
+    smtpUser: ''
+    smtpPass: ''
+
+
+functions:
+  sendWeatherReport:
+    handler: handler.reportWeatherLambda
